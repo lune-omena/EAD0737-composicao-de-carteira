@@ -9,6 +9,9 @@
 # Script Aula 8 - Composicao de Carteiras - II
 #PortfolioAnalytics
 # ------------------------------------------------
+
+install.packages("ROI")
+
 install.packages('fPortfolio')
 install.packages("Rglpk")
 install.packages("ROI.plugin.glpk")
@@ -31,9 +34,9 @@ rm(list = ls()) # Limpar todas as variaveis
 
 # Carregar os dados dos retornos das acoes:
 
-setwd("/media/lune/Data/USP/8o_semestre/EAD0737/Aula 8") # definir diretorio
+setwd("~/Documentos/ano_3/finanças") # definir diretorio
 
-Acoes = read_excel("Dados/dados_lu_ei.xlsx",sheet = "Retornos")
+Acoes = read_excel("dados_lu_ei.xlsx",sheet = "retornos")
 
 # ------------------------------------------------
 
@@ -100,7 +103,7 @@ carteira = add.objective(portfolio = carteira, type = "risk", name = "StdDev")
 
 # 2. Carteira de retorno pre definido - eficiente e com menor risco para o retorno desejado...
 
-# carteira <- add.constraint(portfolio = carteira, type = "return",return_target = 0.0008)
+carteira = add.constraint(portfolio = carteira, type = "return",return_target = 0.0008)
 
 # Otimizando a carteira...
 
